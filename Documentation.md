@@ -1,3 +1,8 @@
+## Nomenclature
+    To-Do/todo file :   .todo_data.json
+    config file:        .config.json
+
+
 ## Priority Levels
     - Priority 0: Critical
     - Priority 1: Important
@@ -22,8 +27,12 @@ Default To-Do file looks like this
         tasks: []
     }
 
-# .config.json
-To be accessable via config command in the future.
+## .config.json
+Right now it is created at the current working directory.
+
+To be accessable also via config command in the future.
+    
+
 
 ## Create
     - automatically sets the current To-Do in config file to the new To-Do

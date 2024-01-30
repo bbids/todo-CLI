@@ -3,7 +3,7 @@ class FileConstants:
     CONFIG = ".config.json"
 
 class ConfigKeys:
-    KEY_CURRENT_TODO = "current-ToDo"
+    KEY_CURRENT_TODO = "todo-file-location"
 
 class TaskKeys:
     KEY_ID = "ID"
