@@ -1,3 +1,5 @@
 .todo_data.json
-.config.json
+.config_data.json
 __pycache__
+build
+To_Do_CLI.egg-info

@@ -4,6 +4,11 @@ Supports JSON file format for the non-volatile storage of tasks.
 
 Work in progress.
 
+# Install
+We use python setuptools.
+
+    pip install .
+
 # Usage
 First create a todofile
 
@@ -17,7 +22,7 @@ Then you can add, read, update and remove
 
     python3 main.py update 0 --cont "Updating a task with ID 0. IDs are printed on read" --prio  3
 
-    python3 main.py remove 2
+    python3 main.py remove 0
 
 You can reset ID's. It starts with topmost task and assigns it an ID 0, then it increments at every task. This is useful because removing doesn't reset IDs.
 

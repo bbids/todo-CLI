@@ -21,7 +21,7 @@ class Operation:
         todo_file_path = os.path.join(os.getcwd(), FileConstants.TODO)
         logging.info(f"creating todo_data at {todo_file_path}")
         Config.set_todo_file(todo_file_path)
-        logging.info(f"config.json: changed todo file location to {todo_file_path}")
+        logging.info(f"{FileConstants.CONFIG}: changed todo file location to {todo_file_path}")
 
 
         with open(todo_file_path, "w") as f:

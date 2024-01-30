@@ -1,6 +1,6 @@
 class FileConstants:
     TODO = ".todo_data.json"
-    CONFIG = ".config.json"
+    CONFIG = ".config_data.json"
 
 class ConfigKeys:
     KEY_CURRENT_TODO = "todo-file-location"
