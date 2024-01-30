@@ -10,8 +10,12 @@ from todo.config import Config
 
 class Operation_API:
 
-    def __init__(self):
-        self.args = parse_arguments()
+    def __init__(self, testingArgs = None):
+        if testingArgs is None:
+            self.args = parse_arguments()
+        else:
+            # for testing purposes
+            self.args = testingArgs
 
     def execute(self):
         # pythonic switch
@@ -35,7 +39,8 @@ class Operation_API:
                 Config.check_todo_existence()
                 self.config()
             case _:
-                logging.debug("???")
+                # argsparser should catch it, this is for tests
+                logging.error("Unknown command")
 
     def add(self):
         logging.info(f"Adding '{self.args.task}'")
