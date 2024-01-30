@@ -8,6 +8,7 @@ from todo.args_parser import parse_arguments
 from todo.operation import Operation
 from todo.config import Config
 from todo.constants import FileConstants
+from todo.constants import Colors
 
 class Operation_API:
 
@@ -41,6 +42,8 @@ class Operation_API:
                 self.config()
             case "set":
                 self.set()
+            case "get":
+                self.get()
             case _:
                 # argsparser should catch it, this is for tests
                 logging.error("Unknown command")
@@ -60,7 +63,21 @@ class Operation_API:
             logging.error("invalid literal for taskID, an integer type")
 
     def create(self):
-        Operation.create_todo_file()
+        if os.path.isfile(os.path.join(os.getcwd(), FileConstants.TODO)):
+            while True:
+                ans = input(f"The {Colors.RED}todo file{Colors.DEFAULT} is already present in the current directory. " 
+                            "Do you want to override?\nY/N: ")
+                match ans.lower():
+                    case 'y':
+                        Operation.create_todo_file()
+                        break
+                    case 'n':
+                        logging.info("Skipped todo file creation.")
+                        break
+                    case _:
+                        continue
+        else:
+            Operation.create_todo_file()
 
     def update(self):
         id = int(self.args.taskID)
@@ -112,3 +129,7 @@ class Operation_API:
                     Config.set_todo_file(os.path.join(path, FileConstants.TODO))
                 else:
                     logging.error(f"{path} is not a a valid directory")
+
+    def get(self):
+        logging.info("Printing the currently focused todo file:")
+        print(Config.get_todo_file_path())

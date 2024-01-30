@@ -27,6 +27,8 @@ def parse_arguments():
     parser_set_todo = subparser.add_parser("set", help="set the todo file to be used")
     parser_set_todo.add_argument("todoDir", help="directory of the todo file, can use . to mean current directory")
 
+    subparser.add_parser("get", help="Get the location of the current todo file")
+
 
     subparser.add_parser("interact")
 
