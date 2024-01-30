@@ -36,6 +36,17 @@ You can move using keys 'w' for up, and 's' for down.
 
 You can delete using a key 'd'.
 
+# set and get
+Use set command with a dot to set the working directory's todo file as focused.
+
+    todo set .
+
+You can also use an absolute path as well. 
+
+Use get command to get the location of the todo file being focused at the moment.
+
+    todo get
+
 # Config
 The config file can be accessed via:
 
