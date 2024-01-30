@@ -6,8 +6,13 @@ from todo.operation import Operation
 
 class Operation_API:
 
-    def __init__(self):
-        self.args = parse_arguments()
+    def __init__(self, testingArgs = None):
+        if testingArgs is None:
+            self.args = parse_arguments()
+        else:
+            # parsing is done in the test module, with additional content added
+            # manually to simulate running in CLI
+            self.args = testingArgs
 
     def execute(self):
         # pythonic switch
@@ -24,7 +29,9 @@ class Operation_API:
             case "reset_ids":
                 self.reset_ids()
             case _:
-                logging.debug("???")
+                # parser should catch it already,
+                # this is really intended for tests, beside nice to have default
+                logging.error("Unknown command.")
 
     def add(self):
         logging.info(f"Adding '{self.args.task}'")
