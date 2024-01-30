@@ -5,5 +5,10 @@ Supports JSON file format for the non-volatile storage of tasks.
 Work in progress.
 
 
-# Usage
+# Help  
     python3 main.py -h
+
+# Testing
+Right now, for development reasons, testing is conducted in the tests folder  
+    
+    python3 testHappyPath.py
