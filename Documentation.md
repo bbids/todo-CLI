@@ -16,8 +16,14 @@
         "Category": None,
     }
 
-## Config.json
-    To be accessable via config command in the future.
+## .todo_data.json
+Default To-Do file looks like this
+    {
+        tasks: []
+    }
+
+# .config.json
+To be accessable via config command in the future.
 
 ## Create
     - automatically sets the current To-Do in config file to the new To-Do

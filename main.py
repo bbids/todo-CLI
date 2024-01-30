@@ -10,6 +10,7 @@ from config import config_setup
 from operation_functions import create_todo_file
 from operation_functions import add_task
 from operation_functions import display_tasks
+from operation_functions import remove_single_task
 
 
 def main():
@@ -29,18 +30,19 @@ def main():
     args = parse_arguments()
 
     # pythonic switch
+    logging.debug(f"{args.operation} was used")
     match args.operation:
         case "create":
-            logging.debug("create was used")
             create_todo_file()
         case "remove":
-            logging.debug("remove was used")
+            try:
+                remove_single_task(int(args.taskID))
+            except ValueError:
+                logging.error("invalid literal for taskID, an integer type")
         case "add":
-            logging.debug("add was used")
             logging.info(f"Adding '{args.task}'")
             add_task(args.task, 5)
         case "read":
-            logging.debug("read was used")
             display_tasks()
         case _:
             logging.debug("???")
