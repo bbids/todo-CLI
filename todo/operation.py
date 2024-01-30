@@ -1,6 +1,7 @@
 import os
 import logging
 import json
+import textwrap
 
 from todo.utility import read_json_file
 from todo.utility import get_new_task
@@ -10,6 +11,7 @@ from todo.config import Config
 from todo.constants import TodoKeys
 from todo.constants import TaskKeys
 from todo.constants import FileConstants
+from todo.constants import Colors
 
 class Operation:
     """Namespace for available operations"""
@@ -48,10 +50,32 @@ class Operation:
         """Display the tasks in a pretty way."""
         todo_file_path = Config.get_todo_file_path()
         data = read_json_file(todo_file_path)
+        wrap_indent = "\t\t\t"
 
         # Not so pretty right now, but this can come later
+        print(f"{Colors.BOLD}{TaskKeys.KEY_ID}", TaskKeys.KEY_PRIORITY, TaskKeys.KEY_CONTENT, sep="\t")
         for task in data[TodoKeys.KEY_TASKS]:
-            print(task)
+            id = task[TaskKeys.KEY_ID]
+            priority = task[TaskKeys.KEY_PRIORITY]
+            content = task[TaskKeys.KEY_CONTENT]
+
+            match priority:
+                case 5:
+                    priorityColor = Colors.LIGHT_GRAY
+                case 4:
+                    priorityColor = Colors.LIGHT_GRAY
+                case 3:
+                    priorityColor = Colors.LIGHT_GRAY
+                case 2:
+                    priorityColor = Colors.LIGHT_GRAY
+                case 1:
+                    priorityColor = Colors.RED
+                case _:
+                    priorityColor = Colors.LIGHT_GRAY
+
+            print(f"{priorityColor}{id}\t{priority}\t\t{textwrap.fill(content, subsequent_indent=wrap_indent, width=45)}")
+            
+
 
     def remove_task(taskID):
         """Remove the task with given ID of int type"""
