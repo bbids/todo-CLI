@@ -8,7 +8,7 @@ from operation_functions import add_task
 from operation_functions import display_tasks
 
 
-if __name__ == "__main__":
+def main():
     logging.basicConfig(level=logging.DEBUG)
 
     if len(sys.argv) == 1:
@@ -32,12 +32,14 @@ if __name__ == "__main__":
         case _:
             logging.debug("???")
 
+if __name__ == "__main__":
+    main()
 
-        # init, create the task in the current directory
-        # move, choose the new path for some todo
-        # show, show the available todo files
-        # config, show the config file
-        # update
-        # optional: verbose, set logging level
-            
-        # if not specified the script looks at the current folder if .todo_file is present
+    # init, create the task in the current directory
+    # move, choose the new path for some todo
+    # show, show the available todo files
+    # config, show the config file
+    # update
+    # optional: verbose, set logging level
+        
+    # if not specified the script looks at the current folder if .todo_file is present
