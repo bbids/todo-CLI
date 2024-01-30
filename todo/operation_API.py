@@ -1,7 +1,7 @@
 import logging
 
-from args_parser import parse_arguments
-from operation import Operation
+from todo.args_parser import parse_arguments
+from todo.operation import Operation
 
 
 class Operation_API:

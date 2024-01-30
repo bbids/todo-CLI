@@ -2,7 +2,7 @@ import logging
 import sys
 import json
 
-from constants import TodoKeys
+from todo.constants import TodoKeys
 
 def read_json_file(file_path):
     """Read json file and return data in dictionary form"""

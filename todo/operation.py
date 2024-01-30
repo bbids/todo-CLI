@@ -1,16 +1,15 @@
 import os
-import sys
 import logging
 import json
 
-from utility import read_json_file
-from utility import get_new_task
-from utility import get_config_template
-from config import Config
+from todo.utility import read_json_file
+from todo.utility import get_new_task
+from todo.utility import get_config_template
+from todo.config import Config
 
-from constants import TodoKeys
-from constants import TaskKeys
-from constants import FileConstants
+from todo.constants import TodoKeys
+from todo.constants import TaskKeys
+from todo.constants import FileConstants
 
 class Operation:
     """Namespace for available operations"""

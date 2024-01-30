@@ -1,8 +1,8 @@
 import sys
 import logging
 
-from config import Config
-from operation_API import Operation_API
+from todo.config import Config
+from todo.operation_API import Operation_API
 
 def main():
     logging.basicConfig(level=logging.DEBUG)

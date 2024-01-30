@@ -2,9 +2,9 @@
 import json
 import os
 
-from utility import read_json_file
-from constants import FileConstants
-from constants import ConfigKeys
+from todo.utility import read_json_file
+from todo.constants import FileConstants
+from todo.constants import ConfigKeys
 
 class Config:
     """Namespace for dealing with .config.json file"""
