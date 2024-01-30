@@ -1,3 +1,14 @@
+#How this works
+There is a config.json file. This one is shared among all the todo files. Right now it includes information about the current todo file being worked on. This will allow the project to be more flexible when the package is used as a command.
+
+Additional configurations may be added in the future to the config file.
+
+The todo file includes tasks, you can see a sample task below.
+
+Next development goal is to finish the first version of the To-Do CLI program. That version should be easy to use via a command.
+
+
+
 # Nomenclature
 To-Do/todo file:
 
