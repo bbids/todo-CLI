@@ -5,5 +5,6 @@ Supports JSON file format for the non-volatile storage of tasks.
 Work in progress.
 
 
-# Setup:
-    - python3 config.py
+# Usage
+    python3 main.py [command]
+    Help available with -h flag.
