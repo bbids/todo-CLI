@@ -68,9 +68,22 @@ class Operation:
         if len_after < len_before:
             logging.info(f"Task with ID:{taskID} succesfuly deleted")
             with open(todo_file_path, "w", encoding="utf-8") as f:
-                json.dump(data, f)
+                json.dump(data, f, indent=4)
         else:
             logging.error(f"Task with ID:{taskID} not found.")
+
+    def reset_ids():
+        """Reset the task IDs"""
+        todo_file_path = Config.get_todo_file_path()
+        data = read_json_file(todo_file_path)
+
+        id = 0
+        for item in data[TodoKeys.KEY_TASKS]:
+            item[TaskKeys.KEY_ID] = id
+            id += 1
+        
+        with open(todo_file_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4)
 
 if __name__ == "__main__":
     Operation.remove_single_task(1)

@@ -36,3 +36,6 @@ To be accessable also via config command in the future.
 
 ## Create
     - automatically sets the current To-Do in config file to the new To-Do
+
+## Reset
+    - resets the ids of all the task

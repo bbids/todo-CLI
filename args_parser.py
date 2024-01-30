@@ -16,6 +16,8 @@ def parse_arguments():
     parser_remove_task = subparser.add_parser("remove", help="remove task from To-Do")
     parser_remove_task.add_argument("taskID", help="A task ID, available in operation read")
 
+    subparser.add_parser("reset_ids", help="Reset the IDs")
+
     args = parser.parse_args()
     
     return args

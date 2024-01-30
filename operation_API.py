@@ -5,9 +5,9 @@ from operation import Operation
 
 
 class Operation_API:
-    
+
     def __init__(self):
-        self.args = parse_arguments
+        self.args = parse_arguments()
 
     def execute(self):
         # pythonic switch
@@ -21,6 +21,8 @@ class Operation_API:
                 self.add()
             case "read":
                 self.read()
+            case "reset_ids":
+                self.reset_ids()
             case _:
                 logging.debug("???")
 
@@ -39,5 +41,8 @@ class Operation_API:
 
     def create(self):
         Operation.create_todo_file()
+
+    def reset_ids(self):
+        Operation.reset_ids()
 
     

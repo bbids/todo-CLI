@@ -37,7 +37,7 @@ class Config:
         data[ConfigKeys.KEY_CURRENT_TODO] = todo_file_path
 
         with open(Config.CONFIG_FILE_LOCATION, "w", encoding="utf-8") as f:
-            json.dump(data, f)
+            json.dump(data, f, indent = 4)
 
     def get_todo_file_path():
         """Return the todo file path"""
