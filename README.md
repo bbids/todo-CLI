@@ -41,9 +41,11 @@ Use set command with a dot to set the working directory's todo file as focused.
 
     todo set .
 
-You can otherwise use an absolute path. Use the config command below, to get all the todo file paths.
+You can otherwise use an absolute path. Use the config command below, 
+to get all the todo file paths.
 
-Use get command to get the location of the todo file being focused at the moment.
+Use get command to get the location of the todo file being focused 
+at the moment.
 
     todo get
 

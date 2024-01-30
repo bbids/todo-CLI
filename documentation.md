@@ -1,10 +1,18 @@
-#How this works
-There is a config.json file. This one is shared among all the todo files. The script makes use of the config file to know which todo file it must access via the current-todo. 
+# How this works
+There is a config.json file that is shared among all the todo files. 
+The script makes use of the config file to know which todo file 
+it must access via the current-todo. 
 
-Additional configurations may be added in the future to the config file.
+A todo file contains tasks. There can be multiple todo files on the system 
+and you can access any of them anywhere. There are some commands such 
+as set/get/config that have support for this.
 
-The todo file includes tasks, you can see a sample task below.
+You get the basic add/read/update/remove commands, as well as some supporting 
+ones such as reset_ids, config, set and get.
 
+The "cool" feature is the interact mode. Right now it allows for easy 
+deletion of tasks. There is potential in the interact mode, 
+but a few more improvements are necessary.
 
 
 # Nomenclature
@@ -43,18 +51,26 @@ Default To-Do file looks like this
     }
 
 # .config_data.json
-It is automatically created in the '/home/usr/' folder. It contains the locations of all
-the todo files, which it the script checks if they still exist everytime the config command
-is ran. More importantly it includes the current todo file. This allows a user to work with
-a specific todo file no matter where on the system the CLI is currently at. 
+It is automatically created in the '/home/usr/' folder. It contains the 
+locations of all the todo files, which it the script checks if they still 
+exist everytime the config command is ran. More importantly it includes the 
+current todo file. This allows a user to work with a specific todo file no 
+matter where on the system the CLI is currently at. 
 
 ## Commands
 
 # config
 Opens the config file using nano.
 
+Available are all the locations of the todo files. Using the config command is 
+more appropriate than outright using the config file. This is because the 
+config command also checks if the paths specified in the config file are valid. 
+
 # create
-Automatically sets the current todo todo in config file to the new todo file.
+Automatically sets the current todo todo in config file to the current todo file. 
 
 # reset_ids
-Resets the ids of all the task
+Resets the ids of all the task. This may be useful because removing tasks does not 
+change the IDs. This is a design decision. The reason is that we don't want to 
+confuse the user by automatically updating indeces. Thus by giving them 
+control of when to reset them is a fine solution.
