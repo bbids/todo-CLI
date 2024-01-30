@@ -23,3 +23,4 @@ class Colors:
     PURPLE = "\033[0;35m"
     YELLOW = "\033[1;33m"
     LIGHT_BLUE = "\033[1;34m"
+    DEFAULT = "\033[0m"

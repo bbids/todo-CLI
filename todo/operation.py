@@ -50,10 +50,12 @@ class Operation:
         """Display the tasks in a pretty way."""
         todo_file_path = Config.get_todo_file_path()
         data = read_json_file(todo_file_path)
-        wrap_indent = "\t\t\t"
+        width = 37
 
-        # Not so pretty right now, but this can come later
-        print(f"{Colors.BOLD}{TaskKeys.KEY_ID}\t{TaskKeys.KEY_PRIORITY}\t{TaskKeys.KEY_CONTENT}")
+        VERTICAL_LINE_UTF = "\u2502"
+
+
+        print(Colors.DEFAULT + Colors.BOLD + "_"*width)
         for task in data[TodoKeys.KEY_TASKS]:
             id = task[TaskKeys.KEY_ID]
             priority = task[TaskKeys.KEY_PRIORITY]
@@ -62,25 +64,46 @@ class Operation:
             match priority:
                 case 5:
                     priorityColor = Colors.LIGHT_GRAY
-                    priority = "Optional"
+                    priority = "Optional  "
                 case 4:
                     priorityColor = Colors.LIGHT_BLUE
                     priority = "Non-urgent"
                 case 3:
                     priorityColor = Colors.YELLOW
-                    priority = "Necessary"
+                    priority = "Necessary "
                 case 2:
                     priorityColor = Colors.PURPLE
-                    priority = "Important"
+                    priority = "Important "
                 case 1:
                     priorityColor = Colors.RED
-                    priority = "Critical"
+                    priority = "Critical  "
                 case _:
                     priorityColor = Colors.RED
-                    priority = "Other" #WHY \t???????
+                    priority = "Other     " #WHY \t???????
 
-            print(f"{priorityColor}{id}\t{priority}\t{textwrap.fill(content, subsequent_indent=wrap_indent, width=45)}")
-            
+            #header = f"{id}   {priorityColor}{priority}{Colors.DEFAULT}"
+            #wrapped.insert(0, header)
+            VERTICAL_LINE = f"{priorityColor}\u2502{Colors.DEFAULT}"
+
+
+            print(priorityColor + ' ' + "_"*(width - 2))
+            wrapped = textwrap.wrap(content, width = 35)
+            result = f'{VERTICAL_LINE}\n{VERTICAL_LINE}'.join(line.ljust(35) for line in wrapped)
+            result += f"{VERTICAL_LINE}".ljust(35)
+            print(VERTICAL_LINE + result)
+            print(priorityColor + Colors.BOLD + ' ' + "‾"*(width - 2))
+
+        
+        # template of a box
+        boxColor = Colors.DEFAULT + Colors.BOLD
+        print(boxColor + '\u231C' + "_"*(width - 2) + '\u231D')
+        wrapped = textwrap.wrap("Content", width = 35)
+        result = f'{VERTICAL_LINE_UTF}\n{VERTICAL_LINE_UTF}'.join(line.ljust(35) for line in wrapped)
+        result += f"{VERTICAL_LINE_UTF}".ljust(35)
+        print(VERTICAL_LINE_UTF + result)
+        print(boxColor + '\u231E' + "‾"*(width - 2) + '\u231F')
+
+        
 
 
     def remove_task(taskID):
