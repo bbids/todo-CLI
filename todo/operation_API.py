@@ -7,6 +7,7 @@ from getch import getch
 from todo.args_parser import parse_arguments
 from todo.operation import Operation
 from todo.config import Config
+from todo.constants import FileConstants
 
 class Operation_API:
 
@@ -38,6 +39,8 @@ class Operation_API:
             case "config":
                 Config.check_todo_existence()
                 self.config()
+            case "set":
+                self.set()
             case _:
                 # argsparser should catch it, this is for tests
                 logging.error("Unknown command")
@@ -96,3 +99,16 @@ class Operation_API:
 
     def config(self):
         Config.run()
+
+    def set(self):
+        path = self.args.todoDir
+
+        match path:
+            case ".":
+                path = os.getcwd()
+                Config.set_todo_file(os.path.join(path, FileConstants.TODO))
+            case _:
+                if os.path.isdir(path):
+                    Config.set_todo_file(os.path.join(path, FileConstants.TODO))
+                else:
+                    logging.error(f"{path} is not a a valid directory")

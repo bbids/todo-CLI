@@ -5,7 +5,7 @@ from todo.config import Config
 from todo.operation_API import Operation_API
 
 def main():
-    logging.basicConfig(level=logging.DEBUG)
+    logging.basicConfig(level=logging.INFO)
 
     # Absolutely necessary to have a config file
     if not Config.exists():
