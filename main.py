@@ -3,6 +3,10 @@ import sys
 import logging
 
 from args_parser import parse_arguments
+
+from config import config_exists
+from config import config_setup
+
 from operation_functions import create_todo_file
 from operation_functions import add_task
 from operation_functions import display_tasks
@@ -11,11 +15,20 @@ from operation_functions import display_tasks
 def main():
     logging.basicConfig(level=logging.DEBUG)
 
+    # Absolutely necessary to have a config file
+    if not config_exists():
+        config_path = config_setup()
+        logging.info(f"Config file not found. Creating a config file at {config_path}")
+
+    # if args not specified, should really have a nice "Written by bbids @github"
     if len(sys.argv) == 1:
         print("-h for help")
+        sys.exit()
 
+    # parse the commands
     args = parse_arguments()
 
+    # pythonic switch
     match args.operation:
         case "create":
             logging.debug("create was used")
