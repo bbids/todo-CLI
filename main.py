@@ -1,50 +1,12 @@
 #!/usr/bin/python3
-
-from getpass import getuser
-import os
 import sys
 import logging
-import argparse
 
-def create_todo_file(todo_file_path = None):
-    """Create a hidden todo file for storage purposes."""
-    if todo_file_path is None:
-        # todo_file_path = os.path.join("/home", getuser(), ".todo_data")
-        # use temp directory for now
-        todo_file_path = os.path.join("/home", getuser(), "temp", ".todo_data")
-    
-    todo_dir = os.path.dirname(todo_file_path)
-    if not os.path.exists(todo_dir):
-        logging.error(f"File path '{todo_file_path}' is not valid.")
-        sys.exit()
+from args_parser import parse_arguments
+from operation_functions import create_todo_file
+from operation_functions import add_task
+from operation_functions import display_tasks
 
-    logging.info(f"Creating todo_data at {todo_file_path}")
-
-    with open(todo_file_path, "w") as f:
-        f.write("Hello, World!\n")
-
-    logging.info(f"File successfuly created.")
-
-
-def parse_arguments():
-    parser = argparse.ArgumentParser()
-
-    subparser = parser.add_subparsers(dest="operation",help="Available To-Do file operations")
-
-    parser_create = subparser.add_parser("create", help="create new To-Do.")
-    parser_create.add_argument("-p", "--path", help=f"Optional path for the todo file. Default is: /home/{getuser()}/")
-
-    subparser.add_parser("read", help="read To-Do tasks")
-
-    parser_add_task = subparser.add_parser("add", help="add task to To-Do")
-    parser_add_task.add_argument("task", help="A quoted message to add to To-Do")
-
-    parser_remove_task = subparser.add_parser("remove", help="remove task from To-Do")
-    parser_remove_task.add_argument("taskID", help="A task ID, available in operation read")
-
-    args = parser.parse_args()
-    
-    return args
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)
@@ -57,12 +19,25 @@ if __name__ == "__main__":
     match args.operation:
         case "create":
             logging.debug("create was used")
+            create_todo_file()
         case "remove":
             logging.debug("remove was used")
         case "add":
             logging.debug("add was used")
             logging.info(f"Adding '{args.task}'")
+            add_task(args.task, 5)
         case "read":
             logging.debug("read was used")
+            display_tasks()
         case _:
             logging.debug("???")
+
+
+        # init, create the task in the current directory
+        # move, choose the new path for some todo
+        # show, show the available todo files
+        # config, show the config file
+        # update
+        # optional: verbose, set logging level
+            
+        # if not specified the script looks at the current folder if .todo_file is present
