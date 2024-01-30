@@ -1,8 +1,11 @@
 import logging
+import os
+
+# getch allows us to read a character
+from getch import getch
 
 from todo.args_parser import parse_arguments
 from todo.operation import Operation
-
 
 class Operation_API:
 
@@ -23,6 +26,8 @@ class Operation_API:
                 self.read()
             case "update":
                 self.update()
+            case "interact":
+                self.interact()
             case "reset_ids":
                 self.reset_ids()
             case _:
@@ -54,4 +59,40 @@ class Operation_API:
     def reset_ids(self):
         Operation.reset_ids()
 
-    
+    def interact(self):
+        i = 0
+        os.system("clear")
+        Operation.display_tasks_interactive(i)
+        while True:
+            ch = getch()
+
+            match ch:
+                case "w":
+                    os.system("clear")
+                    i += 1
+                    i = Operation.display_tasks_interactive(i)
+                case "s":
+                    os.system("clear")
+                    i -= 1 
+                    i = Operation.display_tasks_interactive(i)
+                case "c":
+                    os.system("clear")
+                    print("cleared :P")
+                case "d":
+                    Operation.remove_task_interactive(i)
+                    os.system("clear")
+                    i = Operation.display_tasks_interactive(i)
+                case _:
+                    break
+
+        #stdscr = curses.initscr()
+#
+        #stdscr.clear()
+#
+#
+        #self.read()
+#
+        #stdscr.refresh()
+#
+        #stdscr.getch()
+        #curses.endwin()
