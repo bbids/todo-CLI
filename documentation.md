@@ -9,11 +9,11 @@ config file:
 
 
 # Priority Levels
-- Priority 0: Critical
-- Priority 1: Important
-- Priority 2: Necessary
-- Priority 3: Non-urgent
-- Priority 4: Optional  
+- Priority 1: Critical
+- Priority 2: Important
+- Priority 3: Necessary
+- Priority 4: Non-urgent
+- Priority 5: Optional  
 
 Other priorities have no default meaning assosiated with them.
 

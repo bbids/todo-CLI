@@ -28,7 +28,8 @@ class Operation_API:
 
     def add(self):
         logging.info(f"Adding '{self.args.task}'")
-        Operation.add_task(self.args.task, 5)
+        prio = 5 if self.args.prio is None else self.args.prio
+        Operation.add_task(self.args.task, prio)
 
     def read(self):
         Operation.display_tasks()

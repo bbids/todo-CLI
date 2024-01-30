@@ -62,18 +62,23 @@ class Operation:
             match priority:
                 case 5:
                     priorityColor = Colors.LIGHT_GRAY
+                    priority = "Optional"
                 case 4:
-                    priorityColor = Colors.LIGHT_GRAY
+                    priorityColor = Colors.LIGHT_BLUE
+                    priority = "Non-urgent"
                 case 3:
-                    priorityColor = Colors.LIGHT_GRAY
+                    priorityColor = Colors.YELLOW
+                    priority = "Necessary"
                 case 2:
-                    priorityColor = Colors.LIGHT_GRAY
+                    priorityColor = Colors.PURPLE
+                    priority = "Important"
                 case 1:
                     priorityColor = Colors.RED
+                    priority = "Critical"
                 case _:
                     priorityColor = Colors.LIGHT_GRAY
 
-            print(f"{priorityColor}{id}\t{priority}\t\t{textwrap.fill(content, subsequent_indent=wrap_indent, width=45)}")
+            print(f"{priorityColor}{id}\t{priority}\t{textwrap.fill(content, subsequent_indent=wrap_indent, width=45)}")
             
 
 
