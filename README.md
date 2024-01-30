@@ -6,5 +6,4 @@ Work in progress.
 
 
 # Usage
-    python3 main.py [command]
-    Help available with -h flag.
+    python3 main.py -h
