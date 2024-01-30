@@ -31,8 +31,11 @@ You can move using keys 'w' for up, and 's' for down.
 
 You can delete using a key 'd'.
 
-# 
+# Interact mode
 ![Interactive mode](https://github.com/bbids/To-Do-CLI/blob/master/ss.png)
+
+# More?
+See the documentation.md
 
 # Help  
     python3 main.py -h
