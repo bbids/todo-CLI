@@ -1,8 +1,5 @@
-#!/usr/bin/python3
 import sys
 import logging
-
-from args_parser import parse_arguments
 
 from config import Config
 from operation_API import Operation_API
