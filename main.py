@@ -23,6 +23,8 @@ def main():
 if __name__ == "__main__":
     main()
 
+    # consider termcolor for pretty output
+
     # init, create the task in the current directory
     # move, choose the new path for some todo
     # show, show the available todo files

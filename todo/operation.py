@@ -53,7 +53,7 @@ class Operation:
         wrap_indent = "\t\t\t"
 
         # Not so pretty right now, but this can come later
-        print(f"{Colors.BOLD}{TaskKeys.KEY_ID}", TaskKeys.KEY_PRIORITY, TaskKeys.KEY_CONTENT, sep="\t")
+        print(f"{Colors.BOLD}{TaskKeys.KEY_ID}\t{TaskKeys.KEY_PRIORITY}\t{TaskKeys.KEY_CONTENT}")
         for task in data[TodoKeys.KEY_TASKS]:
             id = task[TaskKeys.KEY_ID]
             priority = task[TaskKeys.KEY_PRIORITY]
@@ -76,7 +76,8 @@ class Operation:
                     priorityColor = Colors.RED
                     priority = "Critical"
                 case _:
-                    priorityColor = Colors.LIGHT_GRAY
+                    priorityColor = Colors.RED
+                    priority = "Other" #WHY \t???????
 
             print(f"{priorityColor}{id}\t{priority}\t{textwrap.fill(content, subsequent_indent=wrap_indent, width=45)}")
             
@@ -112,6 +113,24 @@ class Operation:
         
         with open(todo_file_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4)
+
+    def update_task(taskID, new_content = None, new_priority = None):
+        """Update the task with the following new_content and new_priority"""
+        todo_file_path = Config.get_todo_file_path()
+        data = read_json_file(todo_file_path)
+
+        for item in data[TodoKeys.KEY_TASKS]:
+            if item[TaskKeys.KEY_ID] == taskID:
+                if new_content is not None:
+                    item[TaskKeys.KEY_CONTENT] = new_content
+                if new_priority is not None:
+                    item[TaskKeys.KEY_PRIORITY] = new_priority
+
+        with open(todo_file_path, "w", encoding="utf-8") as f:
+            json.dump(data, f)
+
+    def sort_tasks():
+        pass
 
 if __name__ == "__main__":
     Operation.remove_single_task(1)

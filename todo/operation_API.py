@@ -21,6 +21,8 @@ class Operation_API:
                 self.add()
             case "read":
                 self.read()
+            case "update":
+                self.update()
             case "reset_ids":
                 self.reset_ids()
             case _:
@@ -42,6 +44,12 @@ class Operation_API:
 
     def create(self):
         Operation.create_todo_file()
+
+    def update(self):
+        id = int(self.args.taskID)
+        new_content = None if self.args.cont is None else self.args.cont
+        new_priority = None if self.args.prio is None else int(self.args.prio)
+        Operation.update_task(id, new_content, new_priority)
 
     def reset_ids(self):
         Operation.reset_ids()
