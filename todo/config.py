@@ -28,9 +28,10 @@ class Config:
 
     def create():
         """Create a config file, must be ran before usage of To-Do CLI"""
-        # Default empty string raises file not found error, which is what we want
         new_config = {
-            ConfigKeys.KEY_CURRENT_TODO: ""
+            # Default empty string raises file not found error, which is what we want
+            ConfigKeys.KEY_CURRENT_TODO: "",
+            ConfigKeys.KEY_TODO_NAMES: []
         }
 
         with open(Config.CONFIG_FILE_LOCATION, "w", encoding="utf-8") as f:
@@ -47,8 +48,31 @@ class Config:
         with open(Config.CONFIG_FILE_LOCATION, "w", encoding="utf-8") as f:
             json.dump(data, f, indent = 4)
 
+
+    def add_todo_name(todo_file_path):
+        """Add a todo file name and path to the config file"""
+        data = read_json_file(Config.CONFIG_FILE_LOCATION)
+
+        data[ConfigKeys.KEY_TODO_NAMES].append(todo_file_path)
+
+        with open(Config.CONFIG_FILE_LOCATION, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4)
+
     def get_todo_file_path():
         """Return the todo file path"""
         data = read_json_file(Config.CONFIG_FILE_LOCATION)
 
         return data[ConfigKeys.KEY_CURRENT_TODO]
+    
+    def check_todo_existence():
+        """Goes through the locations in the config file todo names and sees if they exist."""
+        data = read_json_file(Config.CONFIG_FILE_LOCATION)
+
+        data[ConfigKeys.KEY_TODO_NAMES] = [path for path in data[ConfigKeys.KEY_TODO_NAMES] if os.path.isfile(path)]
+        
+        current_path = data[ConfigKeys.KEY_CURRENT_TODO]
+        # "" is default path
+        data[ConfigKeys.KEY_CURRENT_TODO] = current_path if os.path.isfile(current_path) else ""
+
+        with open(Config.CONFIG_FILE_LOCATION, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=4)

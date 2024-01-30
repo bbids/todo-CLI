@@ -4,6 +4,7 @@ class FileConstants:
 
 class ConfigKeys:
     KEY_CURRENT_TODO = "todo-file-location"
+    KEY_TODO_NAMES = "available-todo"
 
 class TaskKeys:
     KEY_ID = "ID"

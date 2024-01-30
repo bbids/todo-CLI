@@ -24,6 +24,9 @@ def parse_arguments():
 
     subparser.add_parser("config", help="opens the config file")
 
+    parser_set_todo = subparser.add_parser("set", help="set the todo file to be used")
+    parser_set_todo.add_argument("todoName", help="name of the todo file")
+
 
     subparser.add_parser("interact")
 

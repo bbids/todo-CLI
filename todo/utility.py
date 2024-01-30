@@ -32,8 +32,8 @@ def get_new_task(id, priority, content, due_date, category):
             "Category": category,
         }
 
-def get_config_template():
+def get_todo_template():
     """Return config template as specified by the documentation"""
     return {
-            TodoKeys.KEY_TASKS : []
+            TodoKeys.KEY_TASKS : [],
         }

@@ -36,6 +36,11 @@ You can move using keys 'w' for up, and 's' for down.
 
 You can delete using a key 'd'.
 
+# Config
+The config file can be accessed via:
+
+    todo config
+
 # Interact mode
 ![Interactive mode](https://github.com/bbids/To-Do-CLI/blob/master/ss.png)
 

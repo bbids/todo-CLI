@@ -1,11 +1,9 @@
 #How this works
-There is a config.json file. This one is shared among all the todo files. Right now it includes information about the current todo file being worked on. This will allow the project to be more flexible when the package is used as a command.
+There is a config.json file. This one is shared among all the todo files. The script makes use of the config file to know which todo file it must access via the current-todo. 
 
 Additional configurations may be added in the future to the config file.
 
 The todo file includes tasks, you can see a sample task below.
-
-Next development goal is to finish the first version of the To-Do CLI program. That version should be easy to use via a command.
 
 
 
@@ -16,7 +14,7 @@ To-Do/todo file:
 
 config file: 
 
-    .config.json
+    .config_data.json
 
 
 # Priority Levels
@@ -44,15 +42,19 @@ Default To-Do file looks like this
         tasks: []
     }
 
-# .config.json
-Right now it is created at the current working directory.
+# .config_data.json
+It is automatically created in the '/home/usr/' folder. It contains the locations of all
+the todo files, which it the script checks if they still exist everytime the config command
+is ran. More importantly it includes the current todo file. This allows a user to work with
+a specific todo file no matter where on the system the CLI is currently at. 
 
-To be accessable also via config command in the future.
-    
+## Commands
 
+# config
+Opens the config file using nano.
 
-# Create
-- automatically sets the current To-Do in config file to the new To-Do
+# create
+Automatically sets the current todo todo in config file to the new todo file.
 
-# Reset
-- resets the ids of all the task
+# reset_ids
+Resets the ids of all the task

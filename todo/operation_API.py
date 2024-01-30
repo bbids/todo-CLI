@@ -32,6 +32,7 @@ class Operation_API:
             case "reset_ids":
                 self.reset_ids()
             case "config":
+                Config.check_todo_existence()
                 self.config()
             case _:
                 logging.debug("???")

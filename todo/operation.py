@@ -5,7 +5,7 @@ import textwrap
 
 from todo.utility import read_json_file
 from todo.utility import get_new_task
-from todo.utility import get_config_template
+from todo.utility import get_todo_template
 from todo.config import Config
 
 from todo.constants import TodoKeys
@@ -20,12 +20,17 @@ class Operation:
         """Create a hidden todo file for non-volatile storage purposes, configure the config to use this new file."""
         todo_file_path = os.path.join(os.getcwd(), FileConstants.TODO)
         logging.info(f"creating todo_data at {todo_file_path}")
+        
+        # set the current todo in the config to this new file
         Config.set_todo_file(todo_file_path)
+        # add this todo to the todo names list
+        Config.add_todo_name(todo_file_path)
+        
         logging.info(f"{FileConstants.CONFIG}: changed todo file location to {todo_file_path}")
 
 
         with open(todo_file_path, "w") as f:
-            data = get_config_template()
+            data = get_todo_template()
             json.dump(data, f, indent=4)
 
         logging.info(f"File successfuly created.")
