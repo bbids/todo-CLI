@@ -53,7 +53,8 @@ class Config:
         """Add a todo file name and path to the config file"""
         data = read_json_file(Config.CONFIG_FILE_LOCATION)
 
-        data[ConfigKeys.KEY_TODO_NAMES].append(todo_file_path)
+        if todo_file_path not in data[ConfigKeys.KEY_TODO_NAMES]:
+            data[ConfigKeys.KEY_TODO_NAMES].append(todo_file_path)
 
         with open(Config.CONFIG_FILE_LOCATION, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4)

@@ -106,10 +106,11 @@ class Operation:
             result = f'{VERTICAL_LINE}\n{VERTICAL_LINE}'.join(line.ljust(width) for line in wrapped)
             result += f"{VERTICAL_LINE}".ljust(width)
             print(VERTICAL_LINE + result)
-            print(priorityColor + Colors.BOLD + botLeft + "‾"*(width) + botRight)
+            print(priorityColor + Colors.BOLD + botLeft + "‾"*(width) + botRight + Colors.DEFAULT)
 
             if len(data[TodoKeys.KEY_TASKS]) - i == ind:
                 break
+
 
 
         """
@@ -167,7 +168,7 @@ class Operation:
             result = f'{VERTICAL_LINE}\n{VERTICAL_LINE}'.join(line.ljust(width) for line in wrapped)
             result += f"{VERTICAL_LINE}".ljust(width)
             print(VERTICAL_LINE + result)
-            print(priorityColor + Colors.BOLD + " " + "‾"*(width))
+            print(priorityColor + Colors.BOLD + " " + "‾"*(width) + Colors.DEFAULT)
 
 
     def remove_task(taskID):

@@ -9,13 +9,16 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from todo.operation_API import Operation_API
 
 #Operation_API.test()
-class TestHappyPath(unittest.TestCase):
-    """Test the happy path. Verify that the software doesn't raise errors 
-    when used under typical conditions under knowledable user. """
+class TestInteract(unittest.TestCase):
 
-    def test_general1(self):
+    def test_general3(self):
+        """Test interact"""
         try:
             with self.assertNoLogs(level = logging.ERROR):
+                args = Args("config")
+                operator = Operation_API(args)
+                operator.execute()
+
                 args = Args("create")
                 operator = Operation_API(args)
                 operator.execute()
@@ -25,44 +28,28 @@ class TestHappyPath(unittest.TestCase):
                 operator = Operation_API(args)
                 operator.execute()
 
-                args = Args("remove")
-                args.taskID = 0
+                args = Args("interact")
+                operator = Operation_API(args)
+                operator.execute()             
+        except Exception as e:
+            self.fail(f"Unexpected exception: {e}")
+
+
+    def test_general2(self):
+        """Config test"""
+        try:
+            with self.assertNoLogs(level = logging.ERROR):
+                args = Args("config")
                 operator = Operation_API(args)
                 operator.execute()
 
-                args = Args("add")
-                args.task = "some content yep"
+                args = Args("create")
                 operator = Operation_API(args)
                 operator.execute()
 
-                args = Args("add")
-                args.task = "some content yep yep"
+                args = Args("config")
                 operator = Operation_API(args)
-                operator.execute()
-
-                args = Args("update")
-                args.cont = "some new content"
-                args.taskID = 0
-                args.prio = 3
-                operator = Operation_API(args)
-                operator.execute()
-
-                args = Args("reset_ids")
-                operator = Operation_API(args)
-                operator.execute()
-
-                args = Args("read")
-                operator = Operation_API(args)
-                operator.execute()
-
-                args = Args("remove")
-                args.taskID = 1
-                operator = Operation_API(args)
-                operator.execute()
-        
-                args = Args("read")
-                operator = Operation_API(args)
-                operator.execute()
+                operator.execute()             
         except Exception as e:
             self.fail(f"Unexpected exception: {e}")
 
@@ -70,12 +57,13 @@ class TestHappyPath(unittest.TestCase):
 class Args:
     def __init__(self, operation):
         self.operation = operation
-        self.prio = None        
+        self.prio = None     
+
 if __name__ == "__main__":
     loader = unittest.TestLoader()
 
     # we load interact first because it clears the terminal
     suite = unittest.TestSuite([
-        loader.loadTestsFromTestCase(TestHappyPath),
+        loader.loadTestsFromTestCase(TestInteract),
     ])
     unittest.TextTestRunner().run(suite)
