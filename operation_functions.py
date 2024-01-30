@@ -4,7 +4,7 @@ import logging
 import json
 
 from utility import get_data
-from config import TODO_FILE
+from constants import TODO_FILE
 
 def create_todo_file(todo_file_path = None):
     """Create a hidden todo file for non-volatile storage purposes."""
