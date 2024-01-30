@@ -10,27 +10,27 @@ We use python setuptools.
     pip install .
 
 # Usage
-First create a todofile
+First create a todofile.
 
-    python3 main.py create
+    todo create
 
 Then you can add, read, update and remove
 
-    python3 main.py add "This is some content" --prio 5
+    todo add "This is some content" --prio 5
 
-    python3 main.py read
+    todo read
 
-    python3 main.py update 0 --cont "Updating a task with ID 0. IDs are printed on read" --prio  3
+    todo update 0 --cont "Updating a task with ID 0. IDs are printed on read" --prio  3
 
-    python3 main.py remove 0
+    todo remove 0
 
 You can reset ID's. It starts with topmost task and assigns it an ID 0, then it increments at every task. This is useful because removing doesn't reset IDs.
 
-    python3 main.py reset_ids
+    todo reset_ids
 
 There is also an interact mode. 
 
-    python3 main.py interact
+    todo interact
 
 You can move using keys 'w' for up, and 's' for down.
 
@@ -43,7 +43,7 @@ You can delete using a key 'd'.
 See the documentation.md
 
 # Help  
-    python3 main.py -h
+    todo -h
 
 # Testing
 Right now, for development reasons, testing is conducted in the tests folder  

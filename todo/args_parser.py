@@ -22,6 +22,8 @@ def parse_arguments():
     parser_update_task.add_argument("--cont", help="new content")
     parser_update_task.add_argument("--prio", type=int, help="new priority")
 
+    subparser.add_parser("config", help="opens the config file")
+
 
     subparser.add_parser("interact")
 

@@ -6,6 +6,7 @@ from getch import getch
 
 from todo.args_parser import parse_arguments
 from todo.operation import Operation
+from todo.config import Config
 
 class Operation_API:
 
@@ -30,6 +31,8 @@ class Operation_API:
                 self.interact()
             case "reset_ids":
                 self.reset_ids()
+            case "config":
+                self.config()
             case _:
                 logging.debug("???")
 
@@ -85,14 +88,5 @@ class Operation_API:
                 case _:
                     break
 
-        #stdscr = curses.initscr()
-#
-        #stdscr.clear()
-#
-#
-        #self.read()
-#
-        #stdscr.refresh()
-#
-        #stdscr.getch()
-        #curses.endwin()
+    def config(self):
+        Config.run()

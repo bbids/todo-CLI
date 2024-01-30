@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 import json
 import os
+import subprocess
+from getpass import getuser
+
 
 from todo.utility import read_json_file
 from todo.constants import FileConstants
@@ -12,7 +15,12 @@ class Config:
     # Replace in prod!
     # This is likely to be deprecated eventually. We want the user to specify the 
     # location of the config file, when the setup command is ran.
-    CONFIG_FILE_LOCATION = os.path.join(os.getcwd() , FileConstants.CONFIG)
+    CONFIG_FILE_LOCATION = os.path.join(os.path.expanduser("~"), FileConstants.CONFIG)
+
+    def run():
+        """Opens the config file"""
+        print(Config.CONFIG_FILE_LOCATION)
+        subprocess.run(["nano", Config.CONFIG_FILE_LOCATION])
 
     def exists():
         """Return true if config file exists, otherwise false."""
