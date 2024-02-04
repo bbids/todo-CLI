@@ -1,19 +1,3 @@
-class FileConstants:
-    TODO = ".todo_data.json"
-    CONFIG = ".config_data.json"
-
-class ConfigKeys:
-    KEY_CURRENT_TODO = "todo-file-location"
-    KEY_TODO_NAMES = "available-todo"
-
-class TaskKeys:
-    KEY_ID = "ID"
-    KEY_PRIORITY = "Priority"
-    KEY_CONTENT = "Content"
-
-class TodoKeys:
-    KEY_TASKS = "tasks"
-
 class Colors:
     OKGREEN = "\033[92m"
     BLACK = "\033[0;30m"

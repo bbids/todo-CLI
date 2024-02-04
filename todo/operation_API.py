@@ -2,13 +2,11 @@ import logging
 import os
 
 # getch allows us to read a character
-from getch import getch
+# from getch import getch
 
 from todo.args_parser import parse_arguments
-from todo.operation import Operation
-from todo.config import Config
-from todo.constants import FileConstants
-from todo.constants import Colors
+# from todo.constants import Colors
+import todo.database as database
 
 class Operation_API:
 
@@ -37,9 +35,6 @@ class Operation_API:
                 self.interact()
             case "reset_ids":
                 self.reset_ids()
-            case "config":
-                Config.check_todo_existence()
-                self.config()
             case "set":
                 self.set()
             case "get":
@@ -49,13 +44,22 @@ class Operation_API:
                 logging.error("Unknown command")
 
     def add(self):
-        logging.info(f"Adding '{self.args.task}'")
-        prio = 5 if self.args.prio is None else self.args.prio
-        Operation.add_task(self.args.task, prio)
+        prio = "not specified" if self.args.prio is None else self.args.prio
+        database.add_task(self.args.task, prio)
 
     def read(self):
-        Operation.display_tasks()
+        database.show_tasks()
 
+    def remove(self):
+        database.remove_task(self.args.taskID)
+
+    def update(self):
+        id = self.args.taskID
+        new_content = None if self.args.cont is None else self.args.cont
+        new_priority = None if self.args.prio is None else self.args.prio
+        database.update_task(id, new_content, new_priority)
+    
+"""
     def remove(self):
         try:
             Operation.remove_task(int(self.args.taskID))
@@ -133,3 +137,4 @@ class Operation_API:
     def get(self):
         logging.info("Printing the currently focused todo file:")
         print(Config.get_todo_file_path())
+"""

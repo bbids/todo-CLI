@@ -1,16 +1,15 @@
 import sys
 import logging
+import os
 
-from todo.config import Config
 from todo.operation_API import Operation_API
+import todo.database as database
 
 def main():
     logging.basicConfig(level=logging.INFO)
 
-    # Absolutely necessary to have a config file
-    if not Config.exists():
-        config_file_path = Config.create()
-        logging.info(f"Config file not found. Creating a config file at {config_file_path}")
+    if not os.path.exists("todo.db"):
+        database.create_table()
 
     # if args not specified, should really have a nice "Written by bbids @github"
     if len(sys.argv) == 1:

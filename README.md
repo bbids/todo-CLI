@@ -1,6 +1,6 @@
 Practical To-Do task manager for the command line.
 
-Supports JSON file format for the non-volatile storage of tasks.
+Working on implementing a PostgreSQL database.
 
 Work in progress.
 
