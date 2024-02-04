@@ -26,7 +26,7 @@ def create_table(cursor):
     cursor.execute(
         """CREATE TABLE tasks (
         content TEXT NOT NULL,
-        priority TEXT NOT NULL)"""
+        priority INT NOT NULL)"""
     )
 
 

@@ -12,7 +12,7 @@ def parse_arguments():
 
     parser_add_task = subparser.add_parser("add", help="add task to todo")
     parser_add_task.add_argument("task", help="a quoted message to add to todo")
-    parser_add_task.add_argument("--prio", help="set the task priority")
+    parser_add_task.add_argument("--prio", type=int, help="set the task priority")
 
     parser_remove_task = subparser.add_parser("remove", help="remove task from todo")
     parser_remove_task.add_argument("taskID", help="ID of task to be removed")
@@ -20,7 +20,7 @@ def parse_arguments():
     parser_update_task = subparser.add_parser("update", help="update task, see -h for arguments")
     parser_update_task.add_argument("taskID", help="id of the task being updated")
     parser_update_task.add_argument("--cont", help="new content")
-    parser_update_task.add_argument("--prio", help="new priority")
+    parser_update_task.add_argument("--prio", type=int, help="new priority")
 
     # subparser.add_parser("config", help="opens the config file")
 

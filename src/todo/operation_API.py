@@ -40,7 +40,7 @@ class Operation_API:
             #    logging.error("Unknown command")
 
     def add(self):
-        prio = "not specified" if self.args.prio is None else self.args.prio
+        prio = "not specified" if self.args.prio is None else int(self.args.prio)
         database.add_task(self.args.task, prio)
 
     def read(self):
@@ -53,5 +53,5 @@ class Operation_API:
     def update(self):
         id = self.args.taskID
         new_content = None if self.args.cont is None else self.args.cont
-        new_priority = None if self.args.prio is None else self.args.prio
+        new_priority = None if self.args.prio is None else int(self.args.prio)
         database.update_task(id, new_content, new_priority)
