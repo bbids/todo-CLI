@@ -1,12 +1,13 @@
 import logging
-import os
 
 # getch allows us to read a character
 # from getch import getch
 
 from todo.args_parser import parse_arguments
+import todo.operations as operation
 # from todo.constants import Colors
 import todo.database as database
+
 
 class Operation_API:
 
@@ -48,7 +49,8 @@ class Operation_API:
         database.add_task(self.args.task, prio)
 
     def read(self):
-        database.show_tasks()
+        tasks = database.show_tasks()
+        operation.display_tasks(tasks)
 
     def remove(self):
         database.remove_task(self.args.taskID)

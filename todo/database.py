@@ -42,9 +42,10 @@ def add_task(content, priority, cursor):
 
 @db_connection
 def show_tasks(cursor):
-    tasks = cursor.execute("SELECT rowid, * FROM tasks")
-    for item in tasks:
-        print(item)
+    cursor.execute("SELECT rowid, * FROM tasks")
+    data = cursor.fetchall()
+    return data
+    
 
 
 @db_connection
