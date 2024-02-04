@@ -1,6 +1,6 @@
 import textwrap
 
-from todo.constants import Colors
+from .constants import Colors
 
 def display_tasks(tasks):
         """Display the tasks in a pretty way."""

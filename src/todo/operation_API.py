@@ -1,13 +1,8 @@
 import logging
 
-# getch allows us to read a character
-# from getch import getch
-
-from todo.args_parser import parse_arguments
-import todo.operations as operation
-
-# from todo.constants import Colors
-import todo.database as database
+from .args_parser import parse_arguments
+from . import operations as operation
+from . import database as database
 
 
 class Operation_API:
