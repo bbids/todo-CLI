@@ -1,6 +1,6 @@
 Practical To-Do task manager for the command line.
 
-Working on implementing a PostgreSQL database.
+# Working on integrating SQLite instead of using JSON files for storage.
 
 Work in progress.
 
