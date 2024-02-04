@@ -3,5 +3,3 @@
 __pycache__
 build
 To_Do_CLI.egg-info
-todo.db
-tests
